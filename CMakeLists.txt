@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.25)
+project(algoritms_and_DS C)
+
+set(CMAKE_C_STANDARD 11)
+
+add_executable(algoritms_and_DS main.c)
