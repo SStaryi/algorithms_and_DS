@@ -3,4 +3,4 @@ project(algoritms_and_DS C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(algoritms_and_DS main.c)
+add_executable(algoritms_and_DS main.c lab1/lab1.c lab1/lab1.h)
