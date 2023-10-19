@@ -6,7 +6,6 @@
 #define ALGORITMS_AND_DS_SEARCHES_H
 
 #include <stdio.h>
-#include <malloc.h>
 #include <math.h>
 
 // Линейный поиск элемента x в массиве arr размера size

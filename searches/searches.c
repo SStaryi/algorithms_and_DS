@@ -13,15 +13,14 @@ long long linear_search(const long long const *arr, const size_t size, const lon
 }
 
 long long fast_linear_search(long long *arr, const size_t size, const long long x) {
-    long long new_size = size + 1;
-    realloc(arr, new_size * sizeof(long long));
+    arr[size] = x;
 
     long long i = 0;
 
     while (arr[i] != x)
         i++;
 
-    return i != new_size ? i : -1;
+    return i != size ? i : -1;
 }
 
 long long binary_search_in_a_subarray(long long *arr, long long left, long long right,

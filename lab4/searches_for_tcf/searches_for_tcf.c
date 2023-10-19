@@ -18,8 +18,7 @@ long long linear_search_for_tcf(const long long const *arr, const size_t size, c
 }
 
 long long fast_linear_search_for_tcf(long long *arr, const size_t size, const long long x) {
-    long long new_size = size + 1;
-    realloc(arr, new_size * sizeof(long long));
+    arr[size] = x;
 
     long long i = 0;
     long long number_of_comparisons = 1;

@@ -6,7 +6,6 @@
 #define ALGORITMS_AND_DS_SEARCHES_FOR_TCF_H
 
 #include <stdio.h>
-#include <malloc.h>
 #include <math.h>
 
 // Возвращает количество операций сравнения проведённых в функции linear_search

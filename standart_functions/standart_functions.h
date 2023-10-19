@@ -17,7 +17,6 @@ void swap(void *a, void *b, int size);
 // Функция генерации рандомного массива размера size
 void generate_random_array(int *array, const size_t size);
 
-
 // Возвращает 'истину', если массив отсортирован, иначе -- 'ложь'
 bool is_ordered(int *array, size_t size);
 

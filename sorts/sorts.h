@@ -33,4 +33,7 @@ long long hoar_sort(int arr[], int high);
 /* пирамидальная функция сортировки  */
 long long heap_sort(int A[], int nn);
 
+/* функция-компаратор для qsort */
+int compare_ints(const void *a, const void *b);
+
 #endif //ALGORITMS_AND_DS_SORTS_H
