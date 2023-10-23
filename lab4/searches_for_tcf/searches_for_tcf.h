@@ -9,7 +9,7 @@
 #include <math.h>
 
 // Возвращает количество операций сравнения проведённых в функции linear_search
-long long linear_search_for_tcf(const long long const *arr, const size_t size, const long long x);
+long long linear_search_for_tcf(long long *arr, const size_t size, const long long x);
 
 // Возвращает количество операций сравнения проведённых в функции fast_linear_search
 long long fast_linear_search_for_tcf(long long *arr, const size_t size, const long long x);

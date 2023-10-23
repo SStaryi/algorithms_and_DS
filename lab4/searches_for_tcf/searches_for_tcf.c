@@ -4,7 +4,7 @@
 
 #include "searches_for_tcf.h"
 
-long long linear_search_for_tcf(const long long const *arr, const size_t size, const long long x) {
+long long linear_search_for_tcf(long long *arr, const size_t size, const long long x) {
     long long number_of_comparisons = 0;
 
     for (long long i = 0; i < size; i++) {
