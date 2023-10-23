@@ -25,37 +25,44 @@ long long fast_linear_search(long long *arr, const size_t size, const long long 
 
 long long binary_search_in_a_subarray(long long *arr, long long left, long long right,
                                       const long long x) {
-    long long max_index = right;
+    if (right >= left) {
+        long long mid = left + (right - left) / 2;
 
-    while (right - left > 1) {
-        long long middle = left + (right - left) / 2;
+        // Если элемент находится в середине
+        if (arr[mid] == x)
+            return mid;
 
-        if (arr[middle] > x)
-            right = middle;
-        else
-            left = middle;
+        // Если элемент меньше, чем mid, то он может быть только в левом подмассиве
+        if (arr[mid] > x)
+            return binary_search_in_a_subarray(arr, left, mid - 1, x);
+
+        // В противном случае элемент может быть только в правом подмассиве
+        return binary_search_in_a_subarray(arr, mid + 1, right, x);
     }
 
-    return right != max_index ? right : -1;
+    // Возвращаем -1, если элемент не найден
+    return -1;
 }
 
 long long binary_search(long long *arr, const size_t size, const long long x) {
-    return binary_search_in_a_subarray(arr, -1, size, x);
+    return binary_search_in_a_subarray(arr, 0, size - 1, x);
 }
 
 long long block_search(long long *arr, const size_t size, const long long x) {
-    if (arr[0] > x)
-        return -1;
+    // Вычисляем размер блока для поиска
+    long long block_size = sqrt(size);
 
-    long long block = sqrt(size);
-    long long i = 0;
-
-    while (i < size) {
+    // Находим блок, в котором находится искомый элемент
+    long long i;
+    for (i = 0; i < size; i += block_size)
         if (arr[i] > x)
             break;
 
-        i += block;
-    }
+    // Выполняем линейный поиск в найденном блоке
+    for (long long j = i - block_size; j < i; ++j)
+        if (arr[j] == x)
+            return j;
 
-    return binary_search_in_a_subarray(arr, i - block - 1, i, x);
+    // Возвращаем -1, если элемент не найден
+    return -1;
 }
