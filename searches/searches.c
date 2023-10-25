@@ -70,6 +70,9 @@ long long block_search(long long *arr, const size_t size, const long long x) {
         if (arr[i] > x)
             break;
 
+    if (i + block_size >= size)
+        i += block_size;
+
     // Выполняем линейный поиск в найденном блоке
     for (long long j = i - block_size; j < i; ++j)
         if (arr[j] == x)
