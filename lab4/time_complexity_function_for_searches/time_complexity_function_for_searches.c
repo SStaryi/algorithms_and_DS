@@ -4,12 +4,17 @@
 
 #include "time_complexity_function_for_searches.h"
 
-void check_time(long long (*sort_func)(long long *, size_t, long long),
-                void (*generate_func)(int *, size_t), size_t size, char *experiment_name) {
+void check_time_for_searches(long long (*sort_func)(long long *, size_t, long long),
+                             void (*generate_func)(int *, size_t), size_t size,
+                             char *experiment_name, long long name_search) {
     static size_t run_counter = 1;
     static int inner_buffer[100000000];
 
     generate_func(inner_buffer, size);
+
+    // Если вызывается поиск, который требует отсортированности массива, то массив будет сортироваться
+    if (name_search == 2 || name_search == 3 || name_search == 4)
+        qsort(inner_buffer, size, sizeof(int), compare_ints);
 
     printf("Run #%zu | ", run_counter++);
     printf("Name: %s\n", experiment_name);
@@ -18,33 +23,34 @@ void check_time(long long (*sort_func)(long long *, size_t, long long),
 
     printf("Status: ");
 
-        printf("OK! Count comparison %lld\n\n", count_comparison);
+    printf("OK! Count comparison %lld\n\n", count_comparison);
 
-        char filename[256];
+    char filename[256];
 
-        sprintf(filename, "data/%s.csv", experiment_name);
+    sprintf(filename, "data/%s.csv", experiment_name);
 
-        FILE *f = fopen(filename, "a");
+    FILE *f = fopen(filename, "a");
 
-        if (f == NULL) {
-            printf("File open error %s", filename);
+    if (f == NULL) {
+        printf("File open error %s", filename);
 
-            exit(1);
-        }
+        exit(1);
+    }
 
-        fprintf(f, "%llu; %lld\n", size, count_comparison);
+    fprintf(f, "%llu; %lld\n", size, count_comparison);
 
-        fclose(f);
+    fclose(f);
 }
-
 
 void time_experiment_for_searches() {
     search_function searches[] = {
-            {linear_search_for_tcf, "linear_search"},
+            {linear_search_for_tcf,      "linear_search"},
             {fast_linear_search_for_tcf, "fast_linear_search"},
-            {binary_search_for_tcf, "binary_search"},
-            {block_search_for_tcf,  "block_search"},
-            };
+            {fast_linear_search_for_a_sorted_array_for_tcf,
+                                         "fast_linear_search_for_a_sorted_array_for_tcf"},
+            {binary_search_for_tcf,      "binary_search"},
+            {block_search_for_tcf,       "block_search"},
+    };
     const unsigned FUNCS_N = ARRAY_SIZE(searches);
     generation_function generation[] = {
             {generate_random_array, "random"}
@@ -61,8 +67,8 @@ void time_experiment_for_searches() {
 
                 sprintf(filename, "%s_%s_time", searches[i].name, generation[j].name);
 
-                check_time(searches[i].search, generation[j].generate, size,
-                           filename);
+                check_time_for_searches(searches[i].search, generation[j].generate,
+                                        size, filename, i);
             }
 
         printf("\n");

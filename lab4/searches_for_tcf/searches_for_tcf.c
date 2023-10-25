@@ -31,6 +31,23 @@ long long fast_linear_search_for_tcf(long long *arr, const size_t size, const lo
     return number_of_comparisons + 1;
 }
 
+long long fast_linear_search_for_a_sorted_array_for_tcf(long long *arr, const size_t size,
+                                                        const long long x) {
+    long long number_of_comparisons = 1;
+
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == x)
+            return number_of_comparisons + 2;
+
+        if (arr[i] > x)
+            return number_of_comparisons + 3;
+
+        number_of_comparisons += 3;
+    }
+
+    return number_of_comparisons;
+}
+
 long long binary_search_in_a_subarray_for_tcf(long long *arr, long long left, long long right,
                                               const long long x) {
     long long max_index = right;

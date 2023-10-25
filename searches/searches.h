@@ -14,12 +14,16 @@ long long linear_search(const long long const *arr, const size_t size, const lon
 // Быстрый линейный поиск элемента x в массиве arr размера size
 long long fast_linear_search(long long *arr, const size_t size, const long long x);
 
+// Быстрый линейный поиск элемента x в отсортированном массиве arr размера size. Массив должен
+// быть упорядочен
+long long fast_linear_search_for_a_sorted_array(long long *arr, const size_t size, const long long x);
+
 // Бинарный поиск элемента x в подмассиве массива arr от элемента arr[left] до элемента arr[right].
 // Подмассив должен быть упорядочен
 long long binary_search_in_a_subarray(long long *arr, long long left, long long right,
                                       const long long x);
 
-// Бинарный поиск элемента x в массиве arr размера size. Массив должке быть упорядочен
+// Бинарный поиск элемента x в массиве arr размера size. Массив должен быть упорядочен
 long long binary_search(long long *arr, const size_t size, const long long x);
 
 // Блочный поиск элемента x в массиве arr размера size. Массив должен быть отсортирован

@@ -10,11 +10,12 @@
 
 #include "../searches_for_tcf/searches_for_tcf.h"
 #include "../../standart_functions/standart_functions.h"
+#include "../../sorts/sorts.h"
 
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
 
 typedef struct search_function {
-    long long (*search)(long long*, size_t, long long);
+    long long (*search)(long long *, size_t, long long);
 
     char *name;
 } search_function;

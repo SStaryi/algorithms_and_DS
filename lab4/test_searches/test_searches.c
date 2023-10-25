@@ -52,6 +52,30 @@ void test_fast_linear_search() {
     printf("\n");
 }
 
+void test_fast_linear_search_for_a_sorted_array() {
+    printf("Fast linear search for a sorted array test...\n");
+
+    size_t size = 30;
+    long long arr1[] = {1, 2, 3, 5, 7, 8, 10, 12, 14, 15,
+                        16, 17, 18, 20, 21, 22, 23, 24,
+                        25, 26, 27, 28, 29, 30, 31, 32,
+                        33, 34, 35, 36};
+
+    assert(fast_linear_search_for_a_sorted_array(arr1, size, -1) == -1);
+
+    printf("TEST 1 OK!\n");
+
+    long long arr2[] = {1, 5, 6, 9, 27, 27, 28, 29, 35,
+                        40, 45, 49, 56, 61, 66, 72, 74,
+                        75, 76, 80, 81, 84, 87, 88, 90,
+                        92, 95, 95, 95, 96};
+
+    assert(fast_linear_search_for_a_sorted_array(arr2, size, 1) == 0);
+    printf("TEST 2 OK!\n");
+
+    printf("\n");
+}
+
 void test_binary_search() {
     printf("Binary search test...\n");
 
@@ -61,7 +85,7 @@ void test_binary_search() {
                         25, 26, 27, 28, 29, 30, 31, 32,
                         33, 34, 35, 36};
 
-    assert(block_search(arr1, size, -1) == -1);
+    assert(binary_search(arr1, size, -1) == -1);
 
     printf("TEST 1 OK!\n");
 
@@ -70,7 +94,7 @@ void test_binary_search() {
                         75, 76, 80, 81, 84, 87, 88, 90,
                         92, 95, 95, 95, 96};
 
-    assert(block_search(arr2, size, 1) == 0);
+    assert(binary_search(arr2, size, 1) == 0);
     printf("TEST 2 OK!\n");
 
     printf("\n");

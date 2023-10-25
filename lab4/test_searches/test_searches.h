@@ -15,6 +15,8 @@ void test_linear_search();
 
 void test_fast_linear_search();
 
+void test_fast_linear_search_for_a_sorted_array();
+
 void test_binary_search();
 
 void test_block_search();

@@ -14,6 +14,11 @@ long long linear_search_for_tcf(long long *arr, const size_t size, const long lo
 // Возвращает количество операций сравнения проведённых в функции fast_linear_search
 long long fast_linear_search_for_tcf(long long *arr, const size_t size, const long long x);
 
+// Возвращает количество операций сравнения проведённых в
+// функции fast_linear_search_for_a_sorted_array_for_tcf
+long long fast_linear_search_for_a_sorted_array_for_tcf(long long *arr, const size_t size,
+                                                        const long long x);
+
 // Возвращает количество операций сравнения проведённых в функции binary_search_in_a_subarray
 long long binary_search_in_a_subarray_for_tcf(long long *arr, long long left, long long right,
                                               const long long x);

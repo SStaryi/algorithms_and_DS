@@ -23,6 +23,18 @@ long long fast_linear_search(long long *arr, const size_t size, const long long 
     return i != size ? i : -1;
 }
 
+long long fast_linear_search_for_a_sorted_array(long long *arr, const size_t size, const long long x) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == x)
+            return i;
+
+        if (arr[i] > x)
+            return -1;
+    }
+
+    return -1;
+}
+
 long long binary_search_in_a_subarray(long long *arr, long long left, long long right,
                                       const long long x) {
     if (right >= left) {
