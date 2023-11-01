@@ -5,21 +5,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <malloc.h>
 
 typedef long long base_type; // Замените на нужный тип данных
 
-typedef struct {
+typedef struct SequentialLinearList {
     base_type *array; // Массив для хранения элементов списка
     size_t size; // Текущий размер списка
     size_t capacity; // Текущая вместимость списка
     size_t ptr; // Указатель на текущий элемент
 } SequentialLinearList;
 
-const short list_ok = 0;
-const short list_not_mem = 1; // Ошибка выделения памяти
-const short list_under = 2;
-const short list_end = 3;
-short list_error;
+extern const short list_ok;
+extern const short list_not_mem; // Ошибка выделения памяти
+extern const short list_under;
+extern const short list_end;
+extern short list_error;
 
 // Создает новый список с заданной начальной вместимостью.
 SequentialLinearList *create_list(size_t initial_capacity);

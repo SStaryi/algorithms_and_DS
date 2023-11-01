@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 #include "data_structure/sequential_linear_list.h"
 #include "lab5/lab5.h"
 
@@ -12,7 +10,6 @@ int main() {
     base_type arr_q[] = {1, 2, 3, 4, 5};
     SequentialLinearList *q = create_list(n);
     init_list(q, arr_q, n);
-    output_list(q);
 
     base_type arr_r[] = {6, 7, 8, 9, 10};
     SequentialLinearList *r = create_list(n);

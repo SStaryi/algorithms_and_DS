@@ -4,6 +4,12 @@
 
 #include "sequential_linear_list.h"
 
+const short list_ok = 0;
+const short list_not_mem = 1; // Ошибка выделения памяти
+const short list_under = 2;
+const short list_end = 3;
+short list_error = -1;
+
 SequentialLinearList *create_list(size_t initial_capacity) {
     SequentialLinearList *list = (SequentialLinearList *) malloc(sizeof(SequentialLinearList));
 
