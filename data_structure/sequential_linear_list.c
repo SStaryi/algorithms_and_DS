@@ -2,8 +2,6 @@
 // Created by Artyom on 31.10.2023.
 //
 
-#include <stdio.h>
-
 #include "sequential_linear_list.h"
 
 SequentialLinearList *create_list(size_t initial_capacity) {
@@ -93,6 +91,32 @@ void erase(SequentialLinearList *list, size_t position) {
     list_error = list_ok;
 }
 
+void init_list(SequentialLinearList *list, base_type *array, size_t size) {
+    // Удаляем все текущие элементы из списка
+    while (list->size > 0) {
+        erase(list, 0);
+
+        if (list_error != list_ok) {
+            list_error = list_under;
+
+            return;
+        }
+    }
+
+    // Добавляем элементы из массива в список
+    for (size_t i = 0; i < size; i++) {
+        insert(list, array[i], i);
+
+        if (list_error != list_ok) {
+            list_error = list_not_mem;
+
+            return;
+        }
+    }
+
+    list_error = list_ok;
+}
+
 base_type get(SequentialLinearList *list, size_t position) {
     if (position >= list->size) {
         // Позиция получения выходит за пределы списка
@@ -165,5 +189,64 @@ void copy_list(SequentialLinearList *dest, SequentialLinearList *src) {
 
     dest->size = src->size;
     dest->ptr = src->ptr;
+    list_error = list_ok;
+}
+
+void input_list(SequentialLinearList *list) {
+    if (list == NULL) {
+        // Список не существует
+        list_error = list_under;
+
+        return;
+    }
+
+    size_t size = list->size;
+
+    base_type *array = (base_type *) malloc(size * sizeof(base_type));
+
+    if (array == NULL) {
+        // Ошибка выделения памяти
+        list_error = list_not_mem;
+
+        return;
+    }
+
+    // Ввод элементов
+    for (size_t i = 0; i < size; i++)
+        scanf("%lld", &array[i]);
+
+    init_list(list, array, size);
+
+    if (list_error != list_ok) {
+        free(array);
+
+        return;
+    }
+
+    free(array);
+    list_error = list_ok;
+}
+
+void output_list(SequentialLinearList *list) {
+    if (list == NULL) {
+        // Список не существует
+        list_error = list_under;
+
+        return;
+    }
+
+    if (list->size == 0) {
+        // Список пуст
+        list_error = list_under;
+
+        return;
+    }
+
+    // Элементы списка
+    for (size_t i = 0; i < list->size; i++)
+        printf("%lld ", list->array[i]);
+
+    printf("\n");
+
     list_error = list_ok;
 }

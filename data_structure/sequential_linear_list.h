@@ -2,6 +2,7 @@
 #ifndef SEQUENTIAL_LINEAR_LIST_H
 #define SEQUENTIAL_LINEAR_LIST_H
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
@@ -17,7 +18,7 @@ typedef struct {
 const short list_ok = 0;
 const short list_not_mem = 1; // Ошибка выделения памяти
 const short list_under = 2;
-const short list_eEnd = 3;
+const short list_end = 3;
 short list_error;
 
 // Создает новый список с заданной начальной вместимостью.
@@ -31,6 +32,9 @@ void insert(SequentialLinearList *list, base_type element, size_t position);
 
 // Удаляет элемент из указанной позиции.
 void erase(SequentialLinearList *list, size_t position);
+
+// Функция для инициализации списка значениями из массива
+void init_list(SequentialLinearList *list, base_type *array, size_t size);
 
 // Возвращает элемент из указанной позиции.
 base_type get(SequentialLinearList *list, size_t position);
@@ -52,5 +56,11 @@ bool end_list(SequentialLinearList *list);
 
 // Копирует все элементы из списка src в список dest
 void copy_list(SequentialLinearList *dest, SequentialLinearList *src);
+
+// Заполняет список элементами, введенными пользователем
+void input_list(SequentialLinearList *list);
+
+// Выводит все элементы списка
+void output_list(SequentialLinearList *list);
 
 #endif // SEQUENTIAL_LINEAR_LIST_H
