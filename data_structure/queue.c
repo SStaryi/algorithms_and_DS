@@ -2,24 +2,24 @@
 
 #include "queue.h"
 
-const short queue_ok = 0;
-const short queue_not_mem = 1; // Ошибка выделения памяти
-const short queue_under = 2;
-short queue_error = -1;
+const short list_ok_queue = 0;
+const short list_not_mem_queue = 1; // Ошибка выделения памяти
+const short list_under_queue = 2;
+short list_error_queue = -1;
 
 Queue *init_queue() {
     Queue *queue = (Queue *) malloc(sizeof(Queue));
 
     if (queue == NULL) {
         // Ошибка выделения памяти
-        queue_error = queue_not_mem;
+        list_error_queue = list_not_mem_queue;
 
         return NULL;
     }
 
     queue->head = NULL;
     queue->tail = NULL;
-    queue_error = queue_ok;
+    list_error_queue = list_ok_queue;
 
     return queue;
 }
@@ -43,7 +43,7 @@ void put_queue(Queue *queue, base_type data) {
 base_type get_queue(Queue *queue) {
     if (queue->head == NULL) {
         // Очередь пуста
-        queue_error = queue_under;
+        list_error_queue = list_under_queue;
 
         return -1; // Возвращаем -1 или другое значение, которое не может быть в очереди
     }
@@ -66,7 +66,7 @@ base_type get_queue(Queue *queue) {
 base_type read_queue(Queue *queue) {
     if (queue->head == NULL) {
         // Очередь пуста
-        queue_error = queue_under;
+        list_error_queue = list_under_queue;
 
         return -1; // Возвращаем -1 или другое значение, которое не может быть в очереди
     }

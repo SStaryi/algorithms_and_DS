@@ -62,7 +62,7 @@
 //    *(unsigned *) s->s = len - count;
 //}
 //
-//void insert(string1 subs, string1 s, unsigned index) {
+//void insert_singly(string1 subs, string1 s, unsigned index) {
 //    unsigned len = *(unsigned *) s->s;
 //
 //    if (index > len) {

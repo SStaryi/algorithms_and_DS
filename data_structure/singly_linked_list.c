@@ -2,30 +2,30 @@
 
 #include "singly_linked_list.h"
 
-const short list_ok = 0;
-const short list_not_mem = 1; // Ошибка выделения памяти
-const short list_under = 2;
-const short list_end = 3;
-short list_error = -1;
+const short list_ok_singly = 0;
+const short list_not_mem_singly = 1; // Ошибка выделения памяти
+const short list_under_singly = 2;
+const short list_end_singly = 3;
+short list_error_singly = -1;
 
 Node *create_node(base_type data) {
     Node *new_node = (Node *) malloc(sizeof(Node));
 
     if (new_node == NULL) {
         // Ошибка выделения памяти
-        list_error = list_not_mem;
+        list_error_singly = list_not_mem_singly;
 
         return NULL;
     }
 
     new_node->data = data;
     new_node->next = NULL;
-    list_error = list_ok;
+    list_error_singly = list_ok_singly;
 
     return new_node;
 }
 
-void insert(Node **head, base_type data) {
+void insert_singly(Node **head, base_type data) {
     Node *new_node = create_node(data);
 
     if (new_node == NULL)
@@ -49,7 +49,7 @@ void insert(Node **head, base_type data) {
 void delete(Node **head, base_type data) {
     if (*head == NULL) {
         // Список пуст
-        list_error = list_under;
+        list_error_singly = list_under_singly;
 
         return;
     }
@@ -64,7 +64,7 @@ void delete(Node **head, base_type data) {
 
     if (current == NULL) {
         // Элемент не найден в списке
-        list_error = list_end;
+        list_error_singly = list_end_singly;
 
         return;
     }
@@ -86,7 +86,7 @@ Node *find(Node *head, base_type data) {
 
     if (current == NULL) {
         // Элемент не найден в списке
-        list_error = list_end;
+        list_error_singly = list_end_singly;
 
         return NULL;
     }

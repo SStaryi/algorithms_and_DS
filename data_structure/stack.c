@@ -2,23 +2,23 @@
 
 #include "stack.h"
 
-const short stack_ok = 0;
-const short stack_not_mem = 1; // Ошибка выделения памяти
-const short stack_under = 2;
-short stack_error = -1;
+const short list_ok_stack = 0;
+const short list_not_mem_stack = 1; // Ошибка выделения памяти
+const short list_under_stack = 2;
+short list_error_stack = -1;
 
 Stack *init_stack() {
     Stack *stack = (Stack *) malloc(sizeof(Stack));
 
     if (stack == NULL) {
         // Ошибка выделения памяти
-        stack_error = stack_not_mem;
+        list_error_stack = list_not_mem_stack;
 
         return NULL;
     }
 
     stack->top = NULL;
-    stack_error = stack_ok;
+    list_error_stack = list_ok_stack;
 
     return stack;
 }
@@ -37,7 +37,7 @@ void put_stack(Stack *stack, base_type data) {
 base_type get_stack(Stack *stack) {
     if (stack->top == NULL) {
         // Стек пуст
-        stack_error = stack_under;
+        list_error_stack = list_under_stack;
 
         return -1; // Возвращаем -1 или другое значение, которое не может быть в стеке
     }
@@ -55,7 +55,7 @@ base_type get_stack(Stack *stack) {
 base_type read_stack(Stack *stack) {
     if (stack->top == NULL) {
         // Стек пуст
-        stack_error = stack_under;
+        list_error_stack = list_under_stack;
 
         return -1; // Возвращаем -1 или другое значение, которое не может быть в стеке
     }

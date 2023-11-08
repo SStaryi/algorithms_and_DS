@@ -13,10 +13,10 @@ typedef struct Queue {
     Node *tail; // Указатель на хвост очереди
 } Queue;
 
-extern const short queue_ok;
-extern const short queue_not_mem; // Ошибка выделения памяти
-extern const short queue_under;
-short queue_error;
+extern const short list_ok_queue;
+extern const short list_not_mem_queue; // Ошибка выделения памяти
+extern const short list_under_queue;
+extern short list_error_queue;
 
 // Создает новую очередь и возвращает указатель на нее.
 Queue *init_queue();

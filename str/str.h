@@ -25,7 +25,7 @@
 //
 //void delete(string1 s, unsigned index, unsigned count);
 //
-//void insert(string1 subs, string1 s, unsigned index);
+//void insert_singly(string1 subs, string1 s, unsigned index);
 //
 //void concat(string1 s1, string1 s2, string1 srez);
 //

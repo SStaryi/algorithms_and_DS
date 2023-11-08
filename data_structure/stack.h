@@ -12,10 +12,10 @@ typedef struct Stack {
     Node *top; // Указатель на вершину стека
 } Stack;
 
-extern const short stack_ok;
-extern const short stack_not_mem; // Ошибка выделения памяти
-extern const short stack_under;
-short stack_error;
+extern const short list_ok_stack;
+extern const short list_not_mem_stack; // Ошибка выделения памяти
+extern const short list_under_stack;
+extern short list_error_stack;
 
 // Создает новый стек и возвращает указатель на него.
 Stack *init_stack();

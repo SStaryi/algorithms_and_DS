@@ -13,17 +13,17 @@ typedef struct Node {
     struct Node *next; // Указатель на следующий узел
 } Node;
 
-extern const short list_ok;
-extern const short list_not_mem; // Ошибка выделения памяти
-extern const short list_under;
-extern const short list_end;
-short list_error;
+extern const short list_ok_singly;
+extern const short list_not_mem_singly; // Ошибка выделения памяти
+extern const short list_under_singly;
+extern const short list_end_singly;
+extern short list_error_singly;
 
 // Создает новый узел с заданными данными и возвращает указатель на него.
 Node *create_node(base_type data);
 
 // Вставляет новый узел с заданными данными в конец списка.
-void insert(Node **head, base_type data);
+void insert_singly(Node **head, base_type data);
 
 // Удаляет первый узел с заданными данными из списка.
 void delete(Node **head, base_type data);
