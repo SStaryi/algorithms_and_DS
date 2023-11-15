@@ -59,7 +59,7 @@ void time_experiment_for_searches() {
 
     for (size_t size = 5; size <= 45; size += 5) {
         printf("**************************************\n");
-        printf("Size: %llu\n", size);
+        printf("size: %llu\n", size);
 
         for (size_t i = 0; i < FUNCS_N; i++)
             for (size_t j = 0; j < CASES_N; j++) {
